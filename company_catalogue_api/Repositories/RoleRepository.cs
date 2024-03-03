@@ -17,7 +17,7 @@ namespace company_catalogue_api.Repositories
             return await _context.Roles.ToListAsync();
         }
 
-        public async Task<Role?> GetRoleById(int id)
+        public async Task<Role> GetRoleById(int id)
         {
             return await _context.Roles.FindAsync(id);
         }
