@@ -4,7 +4,11 @@ using company_catalogue_api.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using System.Configuration;
+using System.Net.NetworkInformation;
 using System.Text;
+using Microsoft.Extensions.Configuration;
+using company_catalogue_api.Filters;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -42,6 +46,9 @@ builder.Services.AddScoped<IUserService, UserService>();
 
 builder.Services.AddScoped<IRoleRepository, RoleRepository>();
 builder.Services.AddScoped<IRoleService, RoleService>();
+
+builder.Services.AddScoped<ICompanyRepository, CompanyRepository>();
+builder.Services.AddScoped<ICompanyService, CompanyService>();
 
 var app = builder.Build();
 

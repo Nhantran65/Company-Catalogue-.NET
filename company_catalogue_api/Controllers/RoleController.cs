@@ -1,20 +1,28 @@
-﻿using company_catalogue_api.Models;
+﻿using company_catalogue_api.Attributes; // Import namespace chứa JwtAuthorizeAttribute
+using company_catalogue_api.Models;
 using company_catalogue_api.Services;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration; // Thêm namespace này
+using System;
+using System.Collections.Generic;
 using System.Data;
+using System.Threading.Tasks;
+
 
 namespace company_catalogue_api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [JwtAuthorize] // Sử dụng JwtAuthorizeAttribute thay vì Authorize
     public class RolesController : ControllerBase
     {
         private readonly IRoleService _roleService;
+        private readonly IConfiguration _configuration; // Thêm IConfiguration vào đây
 
-        public RolesController(IRoleService roleService)
+        public RolesController(IRoleService roleService, IConfiguration configuration) // Thêm IConfiguration vào đây
         {
             _roleService = roleService;
+            _configuration = configuration; // Lưu lại IConfiguration
         }
 
         [HttpGet]
@@ -39,6 +47,7 @@ namespace company_catalogue_api.Controllers
         }
 
         [HttpPost]
+        [JwtAuthorize] // Sử dụng JwtAuthorizeAttribute thay vì Authorize
         public async Task<ActionResult<Role>> PostRole(Role role)
         {
             try
@@ -53,6 +62,7 @@ namespace company_catalogue_api.Controllers
         }
 
         [HttpPut("{id}")]
+        [JwtAuthorize] // Sử dụng JwtAuthorizeAttribute thay vì Authorize
         public async Task<IActionResult> PutRole(int id, Role role)
         {
             try
@@ -71,6 +81,7 @@ namespace company_catalogue_api.Controllers
         }
 
         [HttpDelete("{id}")]
+        [JwtAuthorize] // Sử dụng JwtAuthorizeAttribute thay vì Authorize
         public async Task<IActionResult> DeleteRole(int id)
         {
             try

@@ -12,7 +12,9 @@ namespace company_catalogue_api.Repositories
     public class UserRepository : IUserRepository
     {
         private readonly BookingDoctorContext _context;
+
         private readonly IConfiguration _configuration;
+
         public UserRepository(BookingDoctorContext context, IConfiguration configuration)
         {
             _context = context;
@@ -71,7 +73,7 @@ namespace company_catalogue_api.Repositories
             return await _context.Users.FindAsync(id);
         }
 
-        public async Task<string> Login(LoginDAO login)
+        public async Task<string?> Login(LoginDAO login)
         {
             try
             {

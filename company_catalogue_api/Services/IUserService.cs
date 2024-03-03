@@ -8,7 +8,7 @@ namespace company_catalogue_api.Services
     {
         Task<User?> Register(UserDAO user);
         // JWT string
-        Task<string> Login(LoginDAO login);
+        Task<string?> Login(LoginDAO login);
     }
 }
 

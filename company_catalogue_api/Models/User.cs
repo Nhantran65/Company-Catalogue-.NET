@@ -33,6 +33,7 @@ namespace company_catalogue_api.Models;
         [Required(ErrorMessage = "Role ID is required")]
         public int? RoleId { get; set; }
 
+        [Key]
         [ForeignKey("RoleId")]
         public virtual Role? Role { get; set; }
 

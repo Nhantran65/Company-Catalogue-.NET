@@ -12,12 +12,12 @@ namespace company_catalogue_api.Services
             _roleRepository = roleRepository;
         }
 
-        public async Task<IEnumerable<Role>> GetAllRoles()
+        public async Task<IEnumerable<Role?>> GetAllRoles()
         {
             return await _roleRepository.GetAllRoles();
         }
 
-        public async Task<Role> GetRoleById(int id)
+        public async Task<Role?> GetRoleById(int id)
         {
             var role = await _roleRepository.GetRoleById(id);
             if (role == null)
@@ -27,12 +27,12 @@ namespace company_catalogue_api.Services
             return role;
         }
 
-        public async Task<Role> CreateRole(Role role)
+        public async Task<Role?> CreateRole(Role role)
         {
             return await _roleRepository.CreateRole(role);
         }
 
-        public async Task<Role> UpdateRole(int id, Role role)
+        public async Task<Role?> UpdateRole(int id, Role role)
         {
             role.Id = id;
             return await _roleRepository.UpdateRole(role);

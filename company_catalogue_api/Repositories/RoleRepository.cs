@@ -12,24 +12,24 @@ namespace company_catalogue_api.Repositories
             _context = context;
         }
 
-        public async Task<IEnumerable<Role>> GetAllRoles()
+        public async Task<IEnumerable<Role?>> GetAllRoles()
         {
             return await _context.Roles.ToListAsync();
         }
 
-        public async Task<Role> GetRoleById(int id)
+        public async Task<Role?> GetRoleById(int id)
         {
             return await _context.Roles.FindAsync(id);
         }
 
-        public async Task<Role> CreateRole(Role role)
+        public async Task<Role?> CreateRole(Role role)
         {
             _context.Roles.Add(role);
             await _context.SaveChangesAsync();
             return role;
         }
 
-        public async Task<Role> UpdateRole(Role role)
+        public async Task<Role?> UpdateRole(Role role)
         {
             _context.Entry(role).State = EntityState.Modified;
 
